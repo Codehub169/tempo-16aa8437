@@ -26,8 +26,12 @@ echo "Build essentials installation attempt finished."
 # This also assumes appropriate permissions (e.g., running as root or sudo access for global npm install)
 echo "Attempting to update npm globally..."
 if command -v npm > /dev/null; then
-  npm install -g npm@latest # Or you can use a specific version e.g., npm@11.4.1 as suggested in logs
-  echo "npm update attempt finished."
+  # Commenting out the global npm update to prevent EBADENGINE error with incompatible Node.js version
+  # npm install -g npm@latest # Or you can use a specific version e.g., npm@11.4.1 as suggested in logs
+  echo "Skipping global npm update to use the version compatible with the current Node.js."
+  echo "Current npm version: $(npm --version)"
+  echo "Current Node.js version: $(node --version)"
+  echo "npm update attempt finished (skipped)."
 else
     echo "WARNING: npm command not found. Skipping npm update."
 fi
