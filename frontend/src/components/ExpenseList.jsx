@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrashIcon, CalendarDaysIcon, TagIcon, BanknotesIcon } from '@heroicons/react/24/outline';
+import { TrashIcon, CalendarDaysIcon, TagIcon } from '@heroicons/react/24/outline'; // Removed BanknotesIcon
 
 function ExpenseList({ expenses, onDelete }) {
   if (!expenses || expenses.length === 0) {
@@ -25,24 +25,25 @@ function ExpenseList({ expenses, onDelete }) {
           className="bg-white bg-opacity-90 backdrop-blur-md shadow-lg rounded-xl p-5 transform transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]"
         >
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-            <div className="flex-grow mb-4 sm:mb-0">
-              <h3 className="text-xl font-display font-semibold text-primary-700 mb-1 truncate" title={expense.description}>
+            <div className="flex-grow mb-4 sm:mb-0 mr-4"> {/* Added mr-4 for spacing */}
+              <h3 className="text-xl font-display font-semibold text-blue-700 mb-1 truncate" title={expense.description}>
                 {expense.description}
               </h3>
               <div className="flex items-center text-sm text-neutral-500 mb-1">
-                <CalendarDaysIcon className="h-4 w-4 mr-2 text-primary-500 flex-shrink-0" /> 
+                <CalendarDaysIcon className="h-4 w-4 mr-2 text-blue-500 flex-shrink-0" /> 
                 {new Date(expense.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}
               </div>
               {expense.category && (
                 <div className="flex items-center text-sm text-neutral-500">
-                  <TagIcon className="h-4 w-4 mr-2 text-accent-500 flex-shrink-0" /> 
-                  <span className="bg-accent-100 text-accent-700 px-2 py-0.5 rounded-full text-xs font-medium">{expense.category}</span>
+                  <TagIcon className="h-4 w-4 mr-2 text-emerald-500 flex-shrink-0" /> 
+                  <span className="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full text-xs font-medium">{expense.category}</span>
                 </div>
               )}
             </div>
-            <div className="flex flex-col items-end sm:items-center sm:flex-row">
-              <p className="text-2xl font-display font-bold text-primary-600 mr-0 sm:mr-6 mb-2 sm:mb-0">
-                ${parseFloat(expense.amount).toFixed(2)}
+            <div className="flex flex-col items-end sm:items-center sm:flex-row flex-shrink-0"> {/* Added flex-shrink-0 */}
+              <p className="text-2xl font-display font-bold text-blue-600 mr-0 sm:mr-6 mb-2 sm:mb-0">
+                ${/* Ensure amount is a number before calling toFixed */}
+                {typeof expense.amount === 'number' ? expense.amount.toFixed(2) : parseFloat(expense.amount || 0).toFixed(2)}
               </p>
               <button 
                 onClick={() => onDelete(expense.id)} 

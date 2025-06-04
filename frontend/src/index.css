@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 body {
-  @apply bg-neutral-100 text-neutral-700 font-primary antialiased;
-  font-family: 'Inter', sans-serif;
+  @apply bg-neutral-100 text-neutral-700 font-sans antialiased;
+  /* font-family: 'Inter', sans-serif; /* Redundant as font-sans is Inter */
 }
 
 /* Custom scrollbar for a more modern look */
@@ -18,11 +18,11 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-primary-500 rounded-md;
+  @apply bg-blue-500 rounded-md;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary-600;
+  @apply bg-blue-600;
 }
 
 /* Styling for Headless UI Dialog Overlay */
@@ -43,7 +43,7 @@ body {
 /* Input field base styling */
 .form-input {
     @apply block w-full px-4 py-3 border border-neutral-300 rounded-lg shadow-sm placeholder-neutral-400 
-           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 
+           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
            transition-colors duration-150 ease-in-out sm:text-sm;
 }
 
@@ -58,7 +58,7 @@ body {
 }
 
 .btn-primary {
-    @apply bg-accent-500 text-white hover:bg-accent-600 focus:ring-accent-500;
+    @apply bg-emerald-500 text-white hover:bg-emerald-600 focus:ring-emerald-500;
 }
 
 .btn-secondary {
@@ -66,5 +66,5 @@ body {
 }
 
 .btn-danger {
-    @apply bg-error-500 text-white hover:bg-error-600 focus:ring-error-500;
+    @apply bg-red-500 text-white hover:bg-red-600 focus:ring-red-500;
 }
